@@ -56,12 +56,7 @@ def find_str_to_file(find_str, file_name):
         data = f.read()
         result = chardet.detect(data)
         s = data.decode(result['encoding']).upper()
-        if find_str in s:
-            result = True
-            print(file_name)
-        else:
-            result = False
-    return result
+    return find_str in s
 
 
 def main_def():
@@ -71,12 +66,10 @@ def main_def():
         filename_list_new = []
         for filename in filename_list:
             if find_str_to_file(findstr, filename):
+                print(filename)
                 filename_list_new.append(filename)
         print('Всего:', len(filename_list_new))
         filename_list = filename_list_new
 
 
-if __name__ == '__main__':
-    # ваша логика
-    main_def()
-    pass
+main_def()
